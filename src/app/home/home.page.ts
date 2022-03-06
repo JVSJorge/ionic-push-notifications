@@ -1,12 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { PushNotificationService } from '../services/push-notification.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit {
+  public pushMessages = [];
 
-  constructor() {}
+  public ngOnInit(): void {
+    this.pushMessages = this.pushNotification.messages;
+  }
+
+  constructor(public pushNotification: PushNotificationService) {}
 
 }

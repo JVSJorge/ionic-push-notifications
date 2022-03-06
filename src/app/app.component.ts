@@ -1,4 +1,6 @@
+/* eslint-disable @typescript-eslint/member-ordering */
 import { Component } from '@angular/core';
+import { PushNotificationService } from './services/push-notification.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,11 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor() {}
+  initializeApp() {
+    this.pushNotificationService.initialSettings();
+  }
+
+  constructor(private pushNotificationService: PushNotificationService) {
+    this.initializeApp();
+  }
 }
